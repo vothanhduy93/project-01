@@ -1,0 +1,494 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Tên biến tự đặt, thích sao cũng được */
+  --font-primary: "Poppins", sans-serif;
+  --font-heading: "Sen", sans-serif;
+  --cta-color: #ffb900;
+  --background-color: #fffcf4;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* Common CSS (thường dùng) */
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+}
+
+/* 
+    Để cho đơn giản thì chúng ta sẽ sử dụng đơn vị px (đơn vị tuyệt đối) còn đơn vị tương đối (%, em, rem, vw, vh)
+
+    Layout (bố cục)
+
+    Phần header (đầu trang) thường sẽ chứa logo và menu
+    Phần hero-shot: chứa thông tin quan trọng của landing page
+        + Focus point: đầu vào thị giác
+        + CTA button: call to action button (nút kêu gọi hành động)
+
+    div: division (vùng) nhưng nó thẻ không có ngữ nghĩa
+    section: thẻ có ngữ nghĩa (semantic)
+*/
+
+/* Kỹ thuật làm layout
+    1. Float
+    2. Flexbox
+    3. Grid system
+*/
+
+.logo-img {
+  float: left;
+}
+
+.menu-container {
+  float: right;
+  display: flex;
+  /* Mặc định nên khỏi gõ */
+  flex-direction: row;
+  /* Căn giữa theo chiều dọc */
+  align-items: center;
+}
+
+.container {
+  border: 1px solid black;
+}
+
+.clear {
+  clear: both;
+}
+
+/* Pseudo Element: phần tử giả (không có thật) */
+.menu::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Tác động lên tất cả phần tử li là con của phần tử có class là menu */
+.menu li {
+  float: left;
+}
+
+.button-sign-up {
+  width: 144px;
+  height: 50px;
+  background-color: #171100;
+  border-radius: 24.5px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 28px;
+  padding-top: 10px;
+}
+
+.button-sign-up:hover {
+  color: #171100;
+  background-color: white;
+  border: 1px solid #171100;
+}
+
+.logo-img {
+  width: 85px;
+  height: 34px;
+  margin-top: 8px;
+}
+
+.header {
+  background-color: #fffcf4;
+}
+
+.main-content {
+  width: 1170px;
+  margin: 0 auto;
+}
+
+.header .menu-container .current {
+  color: #171100;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+/* Pseudo element: phần tử giả */
+.header .menu-container .current::after {
+  content: "";
+  width: 12px;
+  height: 2px;
+  border-radius: 1px;
+  background: #171100;
+  display: block;
+  position: absolute;
+}
+
+.header .menu-container span {
+  text-decoration: underline;
+}
+
+.header .menu a {
+  color: #5f5b53;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 28px;
+  margin-right: 42px;
+}
+
+.header .menu a:hover {
+  color: #171100;
+  /* Không nên dùng font weight để bold text mà thay vào đó là dùng text-shadow (bóng chữ) */
+  /* font-weight: 600; */
+  /* currentColor là màu hiện tại của phần tử đó */
+  text-shadow: 1px 0 0 currentColor;
+}
+
+.menu {
+  margin-right: 70px;
+  /* Chỉ định phần tử cha có position là relative mục đích là để sử dụng position absolute cho các phần tử con theo tọa độ của cha */
+  position: relative;
+}
+
+.menu li:last-child a {
+  margin-right: 0;
+}
+
+.header-logo {
+  padding-top: 44px;
+  /* display: flex; */
+  /* Căn giữa theo chiều ngang */
+  /* justify-content: center; */
+  /* Căn giữa theo chiều dọc */
+  /* align-items: center; */
+}
+
+/* ------------------ Phần Hero ------------------ */
+
+.hero {
+  background-color: var(--background-color);
+  padding-top: 73px;
+  padding-bottom: 64px;
+}
+
+.hero .hero-left {
+  width: 470px;
+  position: relative;
+}
+
+.hero .hero-left .stats {
+  position: absolute;
+  bottom: 48px;
+  right: -100px;
+  width: 270px;
+  height: 244px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.05);
+  padding: 24px;
+}
+
+.hero-left .stats .item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.hero-left .stats .item img {
+  margin-right: 16px;
+}
+
+.hero-left .stats .item p:first-of-type {
+  color: #5f5b53;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+.hero-left .stats .item p:last-of-type {
+  color: #171100;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.67;
+}
+
+.hero .hero-right {
+  width: 700px;
+  margin-left: 212px;
+  margin-top: 46px;
+}
+
+.hero .main-content {
+  display: flex;
+}
+
+.hero .hero-left .hero-img {
+  width: 470px;
+  height: 685px;
+}
+
+.hero .hero-right .title {
+  color: #171100;
+  font-family: var(--font-heading);
+  font-size: 5.8rem;
+  font-weight: 700;
+  line-height: 1.17;
+}
+
+.hero .hero-right .description {
+  color: #5f5b53;
+  font-size: 18px;
+  line-height: 1.67;
+}
+
+.hero .cta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.hero .cta .cta-button {
+  color: #fff;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 64px;
+  width: 180px;
+  height: 64px;
+  background: var(--cta-color);
+  display: block;
+  border-radius: 32px;
+}
+
+.hero .hero-right .description {
+  margin-top: 28px;
+  margin-bottom: 38px;
+}
+
+.hero .watch-video img {
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+.hero .cta .watch-video {
+  border: 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  margin-left: 28px;
+}
+
+/* Pseudo class: lớp giả */
+.hero .cta .watch-video:hover {
+  cursor: pointer;
+}
+
+.hero .watch-video span {
+  color: #171100;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.67;
+  margin-left: 14px;
+}
+
+.hero .hero-right .recent-engagement {
+  color: #5f5b53;
+  font-size: 1.8rem;
+  line-height: 1.67;
+  margin-bottom: 8px;
+}
+
+.hero .hero-right .summary {
+  display: flex;
+}
+
+.hero-right .item span:first-of-type {
+  color: #171100;
+  font-family: var(--font-heading);
+  font-size: 4.4rem;
+  font-weight: 700;
+  line-height: 1.23;
+}
+
+.hero-right .item span:last-of-type {
+  color: #5f5b53;
+  font-size: 1.8rem;
+  margin-left: 14px;
+}
+
+.hero-right .item:last-child {
+  margin-left: 28px;
+}
+
+/* ------------------ Phần Our Popular Courses ------------------ */
+.popular-courses .main-content {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+.popular-courses .title {
+  color: #171100;
+  font-family: var(--font-heading);
+  font-size: 3.8rem;
+  font-weight: 700;
+  line-height: 1.26;
+  letter-spacing: -0.76px;
+}
+
+.popular-courses .title-description {
+  width: 458px;
+  color: #5f5b53;
+  font-size: 1.8rem;
+  line-height: 1.67;
+  margin-bottom: 55px;
+}
+
+.popular-courses .course-list {
+  display: flex;
+}
+
+.popular-courses .course-list .img-course {
+  width: 370px;
+  height: 278px;
+}
+
+.popular-courses .course-list h3 {
+  color: #171100;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.67;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+.popular-courses .course-list .description {
+  color: #5f5b53;
+  font-size: 1.4rem;
+  line-height: 1.86;
+  margin-bottom: 22px;
+}
+
+.popular-courses .course-list .price {
+  color: #171100;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.67;
+}
+
+.popular-courses .course-list .price-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popular-courses .course-list .item {
+  margin-right: 30px;
+  border-radius: 12px;
+  box-shadow: 0 18px 36px 0 rgba(0, 0, 0, 0.05);
+}
+
+.popular-courses .course-list .item:last-of-type {
+  margin-right: 0;
+}
+
+.popular-courses .course-list .btn-book-now {
+  width: 118px;
+  height: 50px;
+  border-radius: 25px;
+  background: #ffb900;
+  color: #fff;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 50px;
+}
+
+.popular-courses .course-content {
+  padding: 22px;
+}
+
+/* ------------------ Phần Testimonials ------------------ */
+.testimonials {
+  background-color: #2e2100;
+  /* top-bottom left-right */
+  padding: 96px 135px;
+  /* Long-hand style: chiều kim đồng hồ: top - right - bottom - left */
+  /* padding: 96px 135px 96px 135px; */
+  /* Top left-right bottom */
+  /* padding: 0 0 0; */
+}
+
+.testimonials .main-content {
+  display: flex;
+}
+
+.testimonials .col-left {
+  width: 25.21%;
+}
+
+.testimonials .col-right {
+  width: 74.79%;
+}
+
+.testimonials .avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 72px;
+}
+
+.testimonials .name {
+  color: #f7f7f7;
+  font-family: Sen;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.42;
+}
+
+.testimonials .position {
+  color: #bfbcb2;
+  font-size: 1.4rem;
+  line-height: 1.86;
+}
+
+.testimonials .double-quote {
+  width: 30px;
+  height: 28px;
+}
+
+.testimonials .content {
+  width: 740px;
+  color: #fff;
+  font-size: 2.6rem;
+  font-style: italic;
+  line-height: 1.54;
+}
+
+.testimonials .nav-dots {
+  display: flex;
+}
+
+.testimonials .nav-dots .dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background: #634700;
+  margin: 6px;
+}
+
+.testimonials .active .dot {
+  background: #ffb900;
+}
+
+/* Pseudo class: lớp giả */
+.testimonials .nav-dots .dot:first-child {
+  margin-left: 0;
+}
